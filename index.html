@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Artes Digitais</title>
+  <style>
+    /* ESTILOS GERAIS */
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      /* Plano de fundo centralizado e fixo */
+      background: url('https://www.pixground.com/wp-content/uploads/2023/03/Digital-Cyber-Circuit-Board-Digital-Art-4K-Wallpaper-1081x608.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin-right: 350px; /* Espaço para o carrinho flutuante */
+      color: #333;
+    }
+
+    /* Adicionando overlay escuro para melhor legibilidade */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    h1 {
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+    }
+
+    /* ESTILOS DOS PRODUTOS */
+    .produtos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Aumentei para 350px para caber a imagem */
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .produto {
+      border: 1px solid rgba(0, 136, 61, 0.8);
+      border-radius: 10px;
+      padding: 10px;
+      background: rgb(255, 255, 255); /* Transparência no fundo */
+      box-shadow: 0 4px 8px rgba(243, 239, 2, 0.863);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .produto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 1); /* Remove transparência no hover */
+    }
+
+    .produto-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .produto h3 {
+      margin-top: 0;
+      color: #444;
+      font-size: 1.3em;
+    }
+
+    .produto p {
+      color: #666;
+      flex-grow: 1; /* Faz o parágrafo ocupar o espaço disponível */
+    }
+
+    .produto .preco {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #28a745;
+      margin: 15px 0;
+      
+    }
+
+    /* CARRINHO DE COMPRAS */
+    .carrinho {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 300px;
+      background: rgba(255, 255, 255, 0.95); /* Transparência */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(221, 221, 221, 0.8);
+      max-height: 90vh;
+      overflow-y: auto;
+      backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+    }
+
+    .carrinho h2 {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .carrinho h2::before {
+      content: '🛒🔥';
+      margin-right: 10px;
+    }
+
+    .carrinho-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px dashed #110101;
+    }
+
+    .carrinho-item button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .carrinho-item button:hover {
+      background-color: #c82333;
+    }
+
+    .carrinho-total {
+      font-weight: bold;
+      font-size: 1.3em;
+      margin: 20px 0;
+      text-align: right;
+      padding-top: 10px;
+      border-top: 2px solid #eee;
+    }
+
+    /* FORMULÁRIO DE PEDIDO */
+    .formulario {
+      background: rgba(255, 255, 255, 0.9); /* Transparência */
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3px); /* Efeito de desfoque */
+    }
+
+    .formulario h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5em;
+    }
+
+    textarea, input[type="text"] {
+      width: 95%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #008d13;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* BOTÕES */
+    button {
+      padding: 12px 25px;
+      background-color: #0c962c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #53ac66;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-adicionar {
+      width: 90%;
+      margin-top: auto;       /* Alinha o botão na parte inferior do card */
+    }
+
+    /* QR CODE */
+    img.qrcode {
+      width: 100%;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      body {
+        margin-right: 0;
+        padding-bottom: 120px; /* Espaço para o carrinho em dispositivos móveis */
+      }
+      
+      .carrinho {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        right: 0;
+        left: 0;
+        width: auto;
+        max-height: 120px;
+        overflow-y: auto;
+        border-radius: 10px 10px 0 0;
+      }
+      
+      .produtos-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Loja de Artes Digitais</h1>
+
+  <div class="produtos-container">
+    <!-- Produto 1 - Cada produto agora tem uma imagem -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Flyer Digital" class="produto-img">
+      <h3>Flyer Digital</h3>
+      <p>Design profissional para seu evento ou promoção com layout moderno e atraente.</p>
+      <div class="preco">R$ 24,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button>
+    </div>
+    
+    <!-- Produto 2 -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Brasão Personalizado" class="produto-img">
+      <h3>Brasão Personalizado</h3>
+      <p>Brasão exclusivo para times, grupos ou famílias com elementos personalizados.</p>
+      <div class="preco">R$ 69,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Brasão Personalizado', 69.99)">Adicionar ao Carrinho</button>
+    </div>
+    
+    <!-- Produto 3 -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Site Institucional" class="produto-img">
+      <h3>Site Institucional</h3>
+      <p>Website completo para seu negócio ou portfólio com design responsivo.</p>
+      <div class="preco">R$ 249,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Site Institucional', 249.99)">Adicionar ao Carrinho</button>
+    </div>
+    
+    <!-- Produto 4 -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Logo Profissional" class="produto-img">
+      <h3>Logo Profissional</h3>
+      <p>Identidade visual para sua marca com 3 opções de conceito.</p>
+      <div class="preco">R$ 99,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Logo Profissional', 99.99)">Adicionar ao Carrinho</button>
+    </div>
+    
+    <!-- Produto 5 -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cartão de Visita" class="produto-img">
+      <h3>Cartão de Visita</h3>
+      <p>Design moderno para seu cartão de visitas com frente e verso.</p>
+      <div class="preco">R$ 34,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cartão de Visita', 34.99)">Adicionar ao Carrinho</button>
+    </div>
+    
+    <!-- Produto 6 -->
+    <div class="produto">
+      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Banner Promocional" class="produto-img">
+      <h3>Banner Promocional</h3>
+      <p>Arte para redes sociais ou impressão em alta resolução.</p>
+      <div class="preco">R$ 44,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Banner Promocional', 44.99)">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+
+  <!-- Carrinho de Compras Flutuante -->
+  <div class="carrinho">
+    <h2>Seu Carrinho</h2>
+    <div id="lista-carrinho"></div>
+    <div class="carrinho-total">Total: R$ <span id="total">0.00</span></div>
+    <img class="qrcode" src="qr2.png" alt="QR Code para pagamento">
+  </div>
+
+  <!-- Formulário de Finalização -->
+  <div class="formulario">
+    <h2>Finalize seu pedido</h2>
+    <input type="text" id="nome" placeholder="Digite seu Nome:" required>
+    <textarea id="mensagem" rows="4" placeholder="Digite aqui suas idéias e sugestões!"></textarea>
+    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
+  </div>
+
+  <script>
+    // Array para armazenar os itens do carrinho
+    const carrinho = [];
+
+    /**
+     * Adiciona um item ao carrinho
+     * @param {string} item - Nome do produto
+     * @param {number} preco - Preço do produto
+     */
+    function adicionarAoCarrinho(item, preco) {
+      carrinho.push({ item, preco });
+      atualizarCarrinho();
+      
+      // Feedback visual ao adicionar item
+      const btn = event.target;
+      btn.textContent = '✔ Adicionado!';
+      btn.style.backgroundColor = '#5cb85c';
+      setTimeout(() => {
+        btn.textContent = 'Adicionar ao Carrinho';
+        btn.style.backgroundColor = '#28a745';
+      }, 1000);
+    }
+
+    /**
+     * Remove um item do carrinho
+     * @param {number} index - Índice do item a ser removido
+     */
+    function removerDoCarrinho(index) {
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    }
+
+    /**
+     * Atualiza a exibição do carrinho na tela
+     */
+    function atualizarCarrinho() {
+      const lista = document.getElementById('lista-carrinho');
+      lista.innerHTML = '';
+      let total = 0;
+
+      // Se o carrinho estiver vazio, mostra mensagem
+      if (carrinho.length === 0) {
+        lista.innerHTML = '<p style="color:#666; text-align:center;">Seu carrinho está vazio</p>';
+      } else {
+        // Para cada item no carrinho, cria um elemento na lista
+        carrinho.forEach((produto, index) => {
+          total += produto.preco;
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'carrinho-item';
+          itemDiv.innerHTML = `
+            <span>${produto.item}</span>
+            <span>R$ ${produto.preco.toFixed(2)} <button onclick="removerDoCarrinho(${index})">X</button></span>
+          `;
+          lista.appendChild(itemDiv);
+        });
+      }
+
+      // Atualiza o total
+      document.getElementById('total').innerText = total.toFixed(2);
+    }
+
+    /**
+     * Envia o pedido via WhatsApp
+     */
+    function enviarPedidoWhatsApp() {
+      const nome = document.getElementById('nome').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+      
+      // Validação dos campos
+      if (!nome) {
+        alert("Por favor, digite seu nome.");
+        return;
+      }
+      
+      if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio. Adicione pelo menos um item.");
+        return;
+      }
+
+      // Formata os itens do carrinho
+      const itens = carrinho.map(p => `• ${p.item} - R$ ${p.preco.toFixed(2)}`).join('%0A');
+      const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
+      
+      // Cria a mensagem para o WhatsApp
+      const textoWhatsApp = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
+                           `*Cliente:* ${nome}%0A%0A` +
+                           `*Itens do Pedido:*%0A${itens}%0A%0A` +
+                           `*Total:* R$ ${total.toFixed(2)}%0A%0A` +
+                           `*Mensagem:*%0A${mensagem || 'Nenhuma mensagem adicional'}`;
+      
+      // Número de telefone (substitua pelo seu)
+      const telefone = '5551989727254';
+      
+      // Abre o WhatsApp com a mensagem pré-preparada
+      window.open(`https://wa.me/${telefone}?text=${textoWhatsApp}`, '_blank');
+      
+      // Limpa o carrinho após envio
+      carrinho.length = 0;
+      atualizarCarrinho();
+      document.getElementById('nome').value = '';
+      document.getElementById('mensagem').value = '';
+    }
+  </script>
+</body>
+
+</html>
