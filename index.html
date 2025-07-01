@@ -1,237 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loja de Artes Digitais</title>
+
   <style>
-    /* ESTILOS GERAIS */
+    /* ---------- ESTILO GERAL ---------- */
     body {
-      font-family: 'Arial', sans-serif;
-      padding: 20px;
-      /* Plano de fundo centralizado e fixo */
+      font-family: Arial, sans-serif;
       background: url('https://www.pixground.com/wp-content/uploads/2023/03/Digital-Cyber-Circuit-Board-Digital-Art-4K-Wallpaper-1081x608.jpg') no-repeat center center fixed;
       background-size: cover;
-      margin-right: 350px; /* Espaço para o carrinho flutuante */
+      margin-right: 350px;
       color: #333;
+      padding: 20px;
     }
 
-    /* Adicionando overlay escuro para melhor legibilidade */
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
       z-index: -1;
     }
 
     h1 {
       text-align: center;
       color: #fff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
       margin-bottom: 30px;
     }
 
-    /* ESTILOS DOS PRODUTOS */
+    /* ---------- PRODUTOS ---------- */
     .produtos-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Aumentei para 350px para caber a imagem */
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .produto {
-      border: 1px solid rgba(0, 136, 61, 0.8);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
-      padding: 10px;
-      background: rgb(255, 255, 255); /* Transparência no fundo */
-      box-shadow: 0 4px 8px rgba(243, 239, 2, 0.863);
-      transition: all 0.3s ease;
+      border: 2px solid #1ec94d;
+      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
+      padding: 15px;
       display: flex;
       flex-direction: column;
+      transition: 0.3s;
     }
 
     .produto:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      background: rgba(255, 255, 255, 1); /* Remove transparência no hover */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
-    .produto-img {
+    .produto img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     .produto h3 {
-      margin-top: 0;
-      color: #444;
-      font-size: 1.3em;
+      margin: 0;
+      color: #333;
     }
 
     .produto p {
-      color: #666;
-      flex-grow: 1; /* Faz o parágrafo ocupar o espaço disponível */
+      color: #555;
+      flex-grow: 1;
     }
 
     .produto .preco {
-      font-size: 1.5em;
+      font-size: 1.4em;
       font-weight: bold;
       color: #28a745;
-      margin: 15px 0;
-      
+      margin: 10px 0;
     }
 
-    /* CARRINHO DE COMPRAS */
+    .btn-adicionar {
+      background-color: #28a745;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-adicionar:hover {
+      background-color: #1e7e34;
+    }
+
+    /* ---------- CARRINHO ---------- */
     .carrinho {
       position: fixed;
       top: 20px;
       right: 20px;
-      width: 300px;
-      background: rgba(255, 255, 255, 0.95); /* Transparência */
+      width: 320px;
+      background: rgba(255,255,255,0.95);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(221, 221, 221, 0.8);
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       max-height: 90vh;
       overflow-y: auto;
-      backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+      backdrop-filter: blur(5px);
     }
 
     .carrinho h2 {
       margin-top: 0;
-      color: #333;
-      border-bottom: 1px solid #eee;
+      border-bottom: 2px solid #ccc;
       padding-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .carrinho h2::before {
-      content: '🛒🔥';
-      margin-right: 10px;
     }
 
     .carrinho-item {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px dashed #110101;
+      border-bottom: 1px dashed #aaa;
+      padding: 8px 0;
     }
 
     .carrinho-item button {
       background-color: #dc3545;
-      color: white;
       border: none;
-      border-radius: 4px;
+      color: white;
       padding: 5px 10px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.2s;
     }
 
     .carrinho-item button:hover {
-      background-color: #c82333;
+      background-color: #b02a37;
     }
 
-    .carrinho-total {
-      font-weight: bold;
-      font-size: 1.3em;
-      margin: 20px 0;
-      text-align: right;
-      padding-top: 10px;
-      border-top: 2px solid #eee;
-    }
-
-    /* FORMULÁRIO DE PEDIDO */
-    .formulario {
-      background: rgba(255, 255, 255, 0.9); /* Transparência */
-      padding: 25px;
-      border-radius: 10px;
-      margin-top: 40px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(3px); /* Efeito de desfoque */
-    }
-
-    .formulario h2 {
-      margin-top: 0;
-      color: #333;
-      font-size: 1.5em;
-    }
-
-    textarea, input[type="text"] {
-      width: 95%;
-      padding: 12px;
+    .resumo {
       margin-top: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #008d13;
-      border-radius: 5px;
-      font-family: Arial, sans-serif;
-      background: rgba(255, 255, 255, 0.8);
+      font-weight: bold;
+      text-align: right;
     }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
+    .resumo p {
+      margin: 5px 0;
     }
 
-    /* BOTÕES */
-    button {
-      padding: 12px 25px;
-      background-color: #0c962c;
+    /* ---------- FORMULÁRIO ---------- */
+    .formulario {
+      background: rgba(255,255,255,0.95);
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .formulario input, .formulario textarea {
+      width: 95%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #28a745;
+    }
+
+    .formulario button {
+      width: 100%;
+      background-color: #28a745;
       color: white;
+      padding: 10px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      transition: all 0.3s;
-      font-size: 1em;
+      transition: 0.3s;
     }
 
-    button:hover {
-      background-color: #53ac66;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .formulario button:hover {
+      background-color: #1e7e34;
     }
 
-    .btn-adicionar {
-      width: 90%;
-      margin-top: auto;       /* Alinha o botão na parte inferior do card */
-    }
-
-    /* QR CODE */
-    img.qrcode {
-      width: 100%;
-      margin-top: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    /* RESPONSIVIDADE */
+    /* ---------- RESPONSIVO ---------- */
     @media (max-width: 768px) {
       body {
         margin-right: 0;
-        padding-bottom: 120px; /* Espaço para o carrinho em dispositivos móveis */
       }
-      
+
       .carrinho {
-        position: fixed;
-        bottom: 0;
-        top: auto;
-        right: 0;
-        left: 0;
-        width: auto;
-        max-height: 120px;
-        overflow-y: auto;
-        border-radius: 10px 10px 0 0;
+        position: static;
+        width: 100%;
+        margin-top: 20px;
+        max-height: none;
       }
-      
+
       .produtos-container {
         grid-template-columns: 1fr;
       }
@@ -240,183 +200,191 @@
 </head>
 
 <body>
+
   <h1>Loja de Artes Digitais</h1>
 
+  <!-- Produtos -->
   <div class="produtos-container">
-    <!-- Produto 1 - Cada produto agora tem uma imagem -->
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Flyer Digital" class="produto-img">
+      <img src="img1.png" alt="Flyer Digital">
       <h3>Flyer Digital</h3>
-      <p>Design profissional para seu evento ou promoção com layout moderno e atraente.</p>
+      <p>Design profissional para evento ou promoção.</p>
       <div class="preco">R$ 24,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button>
     </div>
-    
-    <!-- Produto 2 -->
+
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Brasão Personalizado" class="produto-img">
+      <img src="Brasao.png" alt="Brasão">
       <h3>Brasão Personalizado</h3>
-      <p>Brasão exclusivo para times, grupos ou famílias com elementos personalizados.</p>
+      <p>Criação de brasão exclusivo para sua identidade.</p>
       <div class="preco">R$ 69,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Brasão Personalizado', 69.99)">Adicionar ao Carrinho</button>
     </div>
-    
-    <!-- Produto 3 -->
+
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Site Institucional" class="produto-img">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Site">
       <h3>Site Institucional</h3>
-      <p>Website completo para seu negócio ou portfólio com design responsivo.</p>
+      <p>Website profissional e responsivo.</p>
       <div class="preco">R$ 249,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Site Institucional', 249.99)">Adicionar ao Carrinho</button>
     </div>
-    
-    <!-- Produto 4 -->
+
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Logo Profissional" class="produto-img">
+      <img src="logo.png" alt="Logo">
       <h3>Logo Profissional</h3>
-      <p>Identidade visual para sua marca com 3 opções de conceito.</p>
+      <p>Identidade visual com 3 conceitos exclusivos.</p>
       <div class="preco">R$ 99,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Logo Profissional', 99.99)">Adicionar ao Carrinho</button>
     </div>
-    
-    <!-- Produto 5 -->
+
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cartão de Visita" class="produto-img">
+      <img src="cartao de visita.png" alt="Cartão">
       <h3>Cartão de Visita</h3>
-      <p>Design moderno para seu cartão de visitas com frente e verso.</p>
-      <div class="preco">R$ 34,99</div>
-      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cartão de Visita', 34.99)">Adicionar ao Carrinho</button>
+      <p>Design frente e verso para seu cartão.</p>
+      <div class="preco">R$ 74,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cartão de Visita', 74.99)">Adicionar ao Carrinho</button>
     </div>
-    
-    <!-- Produto 6 -->
+
     <div class="produto">
-      <img src="https://images.unsplash.com/photo-1584735429094-8af28e656154?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Banner Promocional" class="produto-img">
-      <h3>Banner Promocional</h3>
-      <p>Arte para redes sociais ou impressão em alta resolução.</p>
-      <div class="preco">R$ 44,99</div>
-      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Banner Promocional', 44.99)">Adicionar ao Carrinho</button>
+      <img src="oxala.jpg" alt="Banner Orixá">
+      <h3>Banner do Seu Orixá</h3>
+      <p>Arte banner personalizada. Consulte medidas.</p>
+      <div class="preco">R$ 199,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Banner do Seu Orixá', 199.99)">Adicionar ao Carrinho</button>
     </div>
   </div>
 
-  <!-- Carrinho de Compras Flutuante -->
+  <!-- Carrinho -->
   <div class="carrinho">
-    <h2>Seu Carrinho</h2>
+    <h2>🛒 Seu Carrinho</h2>
     <div id="lista-carrinho"></div>
-    <div class="carrinho-total">Total: R$ <span id="total">0.00</span></div>
-    <img class="qrcode" src="qr2.png" alt="QR Code para pagamento">
+    <div class="resumo">
+      <p>Total: R$ <span id="total">0.00</span></p>
+      <p>Sinal (35%): R$ <span id="sinal">0.00</span></p>
+    </div>
+    <img class="qrcode" src="qr2.png" alt="QR Code" style="width:100%; margin-top:10px;">
   </div>
 
-  <!-- Formulário de Finalização -->
-  <div class="formulario">
-    <h2>Finalize seu pedido</h2>
-    <input type="text" id="nome" placeholder="Digite seu Nome:" required>
-    <textarea id="mensagem" rows="4" placeholder="Digite aqui suas idéias e sugestões!"></textarea>
+  <!-- Formulário -->
+  <div class="formulario" align="center">
+    <h2>FINALIZE SEU PEDIDO</h2>
+    <input type="text" id="nome" placeholder="Seu nome">
+    <textarea id="mensagem" placeholder="Observações adicionais"></textarea>
+    <h2 >PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2>
     <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
   </div>
 
-  <script>
-    // Array para armazenar os itens do carrinho
-    const carrinho = [];
+<script>
+  const carrinho = [];
 
-    /**
-     * Adiciona um item ao carrinho
-     * @param {string} item - Nome do produto
-     * @param {number} preco - Preço do produto
-     */
-    function adicionarAoCarrinho(item, preco) {
-      carrinho.push({ item, preco });
-      atualizarCarrinho();
-      
-      // Feedback visual ao adicionar item
-      const btn = event.target;
-      btn.textContent = '✔ Adicionado!';
-      btn.style.backgroundColor = '#5cb85c';
-      setTimeout(() => {
-        btn.textContent = 'Adicionar ao Carrinho';
-        btn.style.backgroundColor = '#28a745';
-      }, 1000);
+  function adicionarAoCarrinho(item, preco) {
+    carrinho.push({ item, preco });
+    atualizarCarrinho();
+
+    const btn = event.target;
+    btn.textContent = '✔ Adicionado!';
+    btn.style.backgroundColor = '#5cb85c';
+    setTimeout(() => {
+      btn.textContent = 'Adicionar ao Carrinho';
+      btn.style.backgroundColor = '#28a745';
+    }, 1000);
+  }
+
+  function removerDoCarrinho(index) {
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+  }
+
+  function atualizarCarrinho() {
+    const lista = document.getElementById('lista-carrinho');
+    lista.innerHTML = '';
+    let total = 0;
+
+    if (carrinho.length === 0) {
+      lista.innerHTML = '<p style="text-align:center; color:#666;">Seu carrinho está vazio</p>';
+    } else {
+      carrinho.forEach((produto, index) => {
+        total += produto.preco;
+        const item = document.createElement('div');
+        item.className = 'carrinho-item';
+        item.innerHTML = `
+          <span>${produto.item}</span>
+          <span>R$ ${produto.preco.toFixed(2)} 
+            <button onclick="removerDoCarrinho(${index})">X</button>
+          </span>`;
+        lista.appendChild(item);
+      });
     }
 
-    /**
-     * Remove um item do carrinho
-     * @param {number} index - Índice do item a ser removido
-     */
-    function removerDoCarrinho(index) {
-      carrinho.splice(index, 1);
-      atualizarCarrinho();
+    const sinal = total * 0.35;
+    document.getElementById('total').innerText = total.toFixed(2);
+    document.getElementById('sinal').innerText = sinal.toFixed(2);
+  }
+
+  function enviarPedidoWhatsApp() {
+    const nome = document.getElementById('nome').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome) {
+      alert('Por favor, preencha seu nome.');
+      return;
     }
 
-    /**
-     * Atualiza a exibição do carrinho na tela
-     */
-    function atualizarCarrinho() {
-      const lista = document.getElementById('lista-carrinho');
-      lista.innerHTML = '';
-      let total = 0;
-
-      // Se o carrinho estiver vazio, mostra mensagem
-      if (carrinho.length === 0) {
-        lista.innerHTML = '<p style="color:#666; text-align:center;">Seu carrinho está vazio</p>';
-      } else {
-        // Para cada item no carrinho, cria um elemento na lista
-        carrinho.forEach((produto, index) => {
-          total += produto.preco;
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'carrinho-item';
-          itemDiv.innerHTML = `
-            <span>${produto.item}</span>
-            <span>R$ ${produto.preco.toFixed(2)} <button onclick="removerDoCarrinho(${index})">X</button></span>
-          `;
-          lista.appendChild(itemDiv);
-        });
-      }
-
-      // Atualiza o total
-      document.getElementById('total').innerText = total.toFixed(2);
+    if (carrinho.length === 0) {
+      alert('Seu carrinho está vazio.');
+      return;
     }
 
-    /**
-     * Envia o pedido via WhatsApp
-     */
-    function enviarPedidoWhatsApp() {
-      const nome = document.getElementById('nome').value.trim();
-      const mensagem = document.getElementById('mensagem').value.trim();
-      
-      // Validação dos campos
-      if (!nome) {
-        alert("Por favor, digite seu nome.");
-        return;
-      }
-      
-      if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio. Adicione pelo menos um item.");
-        return;
-      }
+    const itens = carrinho.map(p => `• ${p.item} - R$ ${p.preco.toFixed(2)}`).join('%0A');
+    const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
+    const sinal = total * 0.35;
 
-      // Formata os itens do carrinho
-      const itens = carrinho.map(p => `• ${p.item} - R$ ${p.preco.toFixed(2)}`).join('%0A');
-      const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
-      
-      // Cria a mensagem para o WhatsApp
-      const textoWhatsApp = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
-                           `*Cliente:* ${nome}%0A%0A` +
-                           `*Itens do Pedido:*%0A${itens}%0A%0A` +
-                           `*Total:* R$ ${total.toFixed(2)}%0A%0A` +
-                           `*Mensagem:*%0A${mensagem || 'Nenhuma mensagem adicional'}`;
-      
-      // Número de telefone (substitua pelo seu)
-      const telefone = '5551989727254';
-      
-      // Abre o WhatsApp com a mensagem pré-preparada
-      window.open(`https://wa.me/${telefone}?text=${textoWhatsApp}`, '_blank');
-      
-      // Limpa o carrinho após envio
-      carrinho.length = 0;
-      atualizarCarrinho();
-      document.getElementById('nome').value = '';
-      document.getElementById('mensagem').value = '';
-    }
-  </script>
+    const texto = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
+                   `*Cliente:* ${nome}%0A%0A` +
+                   `*Itens:*%0A${itens}%0A%0A` +
+                   `*Total:* R$ ${total.toFixed(2)}%0A` +
+                   `*Sinal (35%):* R$ ${sinal.toFixed(2)}%0A%0A` +
+                   `*Observações:* ${mensagem || 'Nenhuma'}`;
+
+    const telefone = '5551989727254';
+    window.open(`https://wa.me/${telefone}?text=${texto}`, '_blank');
+
+    carrinho.length = 0;
+    atualizarCarrinho();
+    document.getElementById('nome').value = '';
+    document.getElementById('mensagem').value = '';
+  }
+  // ------------ CONTADOR DE ACESSOS LOCAL ------------
+
+// Recupera o contador salvo no navegador
+let contador = localStorage.getItem('contadorAcessos');
+
+// Se não existir, inicia em 1
+if (contador === null) {
+  contador = 1;
+} else {
+  contador = parseInt(contador) + 1;
+}
+
+// Salva o novo valor no navegador
+localStorage.setItem('contadorAcessos', contador);
+
+// Exibe na página
+const contadorDiv = document.createElement('div');
+contadorDiv.style.position = 'fixed';
+contadorDiv.style.bottom = '10px';
+contadorDiv.style.left = '10px';
+contadorDiv.style.background = 'rgba(255,255,255,0.8)';
+contadorDiv.style.padding = '8px 15px';
+contadorDiv.style.borderRadius = '10px';
+contadorDiv.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+contadorDiv.style.fontSize = '14px';
+contadorDiv.style.zIndex = '9999';
+contadorDiv.innerHTML = `👁️ Este site foi acessado <b>${contador}</b> vezes por você.`;
+
+document.body.appendChild(contadorDiv);
+
+</script>
+
 </body>
-
 </html>
