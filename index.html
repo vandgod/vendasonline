@@ -178,6 +178,23 @@
     .formulario button:hover {
       background-color: #1e7e34;
     }
+    .capa {
+  width: 100%;
+  max-width: 400px;  /* Limita o tamanho máximo */
+  height: auto;      /* Altura automática proporcional */
+  margin: 5px auto; /* Centraliza horizontalmente */
+  padding: 10px;
+  background: rgba(255, 255, 255, 0); /* Fundo com leve transparência */
+  border-radius:20px;
+  box-shadow: 0 4px 60px rgba(224, 228, 2, 0.863);
+}
+
+.capa img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 
     /* ---------- RESPONSIVO ---------- */
     @media (max-width: 768px) {
@@ -200,10 +217,13 @@
 </head>
 
 <body>
+    <div class="capa" align="center">
+    <img src="capa.png" alt="Capa Stúdio Click">
+  </div>
 
   <h1>Loja de Artes Digitais</h1>
 
-  <!-- Produtos -->
+<!-- Produtos -->
   <div class="produtos-container">
     <div class="produto">
       <img src="img1.png" alt="Flyer Digital">
@@ -386,5 +406,8 @@ document.body.appendChild(contadorDiv);
 
 </script>
 
+<div>
+<?php include 'contador.php'; ?>
+</div>
 </body>
 </html>
