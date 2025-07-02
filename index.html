@@ -30,41 +30,7 @@
       text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
       margin-bottom: 30px;
     }
-    /* CAPA FIXA COM EFEITO */
-.capa {
-  position: fixed;         /* Fixa no topo */
-  top: 10px;               /* Distância do topo */
-  left: 50%;               /* Move até o centro horizontal */
-  transform: translateX(-50%); /* Centraliza */
-  width: 95%;              /* 95% da tela em telas pequenas */
-  max-width: 600px;        /* Tamanho máximo */
-  background: rgba(255, 255, 255, 0.95); /* Fundo com transparência */
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  z-index: 9999;           /* Fica acima de tudo */
-  
-  /* Efeito de entrada */
-  opacity: 0;
-  transform: translate(-50%, -20px);
-  animation: aparecer 1s ease forwards;
-}
-
-/* Estilo da imagem dentro da capa */
-.capa img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Animação de entrada */
-@keyframes aparecer {
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
+    
 
     /* ---------- PRODUTOS ---------- */
     .produtos-container {
