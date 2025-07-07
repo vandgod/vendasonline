@@ -12,7 +12,7 @@
       background: url('https://wallpapers.com/images/hd/colorful-polygons-design-ev1wkka42c38mfej.jpg') no-repeat center center fixed;
       background-size: cover;
       margin-right: 350px; /* Espaço para o carrinho lateral */
-      color: #333333;
+      color: #333;
       padding: 20px;
     }
 
@@ -21,21 +21,36 @@
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.233);
+      background: rgba(141, 112, 112, 0);
       z-index: -1;
     }
 
     /* Estilo do título principal */
     h1 {
       text-align: center;
+      font-size: 3.5em;
       color: #fff;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      text-shadow: 
+        0 0 5px #fff,
+        0 0 10px rgb(10, 201, 35),
+        0 0 20px #0ff,
+        0 0 40px #0ff,
+        0 0 80px #0ff;
+      border: 2px solid #0ff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.4);
+      box-shadow: 
+        0 0 10px #0ff,
+        0 0 20px #0ff,
+        0 0 40px #0ff;
       margin-bottom: 30px;
     }
 
     /* ---------- ESTILO DOS PRODUTOS ---------- */
     .produtos-container {
       display: grid;
+      align-items:center;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
     }
@@ -43,8 +58,8 @@
     .produto {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
-      border: 1px solid #1ec94d;
-      box-shadow: 0 4px 10px rgba(31, 243, 77, 0.979);
+      border: 2px solid #1ec94d;
+      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
       padding: 15px;
       display: flex;
       flex-direction: column;
@@ -83,6 +98,7 @@
 
     .btn-adicionar {
       background-color: #28a745;
+      width: 70%;
       border: none;
       color: white;
       padding: 10px;
@@ -184,17 +200,19 @@
     .formulario input, 
     .formulario textarea {
       width: 95%;
-      padding: 10px;
+      font-size: 25px;
+      padding: 20px;
       margin: 8px 0;
       border-radius: 6px;
       border: 1px solid #28a745;
     }
 
     .formulario button {
-      width: 100%;
+      width: 60%;
+      font-size: 19px;
       background-color: #28a745;
       color: white;
-      padding: 10px;
+      padding: 15px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -213,7 +231,7 @@
       }
 
       .carrinho-container {
-        position: static;
+        position: fixed;
         width: 100%;
         margin-bottom: 20px;
       }
@@ -308,7 +326,14 @@
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Logo Profissional', 99.99)">Adicionar ao Carrinho</button>
     </div>
 
-    
+    <div class="produto">
+      <img src="logo2" alt="Logo">
+      <h3>Fotografia</h3>
+      <p>Sessão Fotografica.</p>
+      <div class="preco">R$ 1,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Fotografia', 1.99)">Adicionar ao Carrinho</button>
+    </div>
+
     <!-- PRODUTO 5 -->
     <div class="produto">
       <img src="cartao de visita.png" alt="Cartão">
@@ -331,8 +356,8 @@
   <!-- FORMULÁRIO DE PEDIDO -->
   <div class="formulario" align="center">
     <h2>FINALIZE SEU PEDIDO</h2>
-    <input type="text" id="nome" placeholder="Seu nome">
-    <textarea id="mensagem" placeholder="Observações adicionais"></textarea>
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea>
     <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2>
     <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
   </div>
@@ -356,6 +381,9 @@
     // Atualiza a exibição do carrinho
     atualizarCarrinho();
 
+    // Atualiza a mensagem automática
+    atualizarMensagemAutomatica();
+
     // Feedback visual ao adicionar item
     const btn = event.target;
     btn.textContent = '✔ Adicionado!';
@@ -375,6 +403,33 @@
   function removerDoCarrinho(index) {
     carrinho.splice(index, 1);
     atualizarCarrinho();
+    atualizarMensagemAutomatica();
+  }
+
+  /**
+   * Atualiza a mensagem automática com os itens do carrinho
+   */
+  function atualizarMensagemAutomatica() {
+    const mensagem = document.getElementById('mensagem');
+    
+    if (carrinho.length === 0) {
+      mensagem.value = '';
+      return;
+    }
+    
+    // Formata os itens do carrinho para a mensagem
+    const itensTexto = carrinho.map(p => `- ${p.item} (R$ ${p.preco.toFixed(2)})`).join('\n');
+    const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
+    const sinal = total * 0.35;
+    const faltante = total - sinal;
+    
+    // Verifica se já tem conteúdo personalizado para não sobrescrever
+    if (!mensagem.value.startsWith('- ')) {
+      mensagem.value = `Itens selecionados:\n${itensTexto}\n\n` +
+                       `Total: R$ ${total.toFixed(2)}\n` +
+                       `Sinal (35%): R$ ${sinal.toFixed(2)}\n` +
+                       `Faltante: R$ ${faltante.toFixed(2)}\n\n`;
+    }
   }
 
   /**
@@ -418,7 +473,7 @@
    */
   function enviarPedidoWhatsApp() {
     const nome = document.getElementById('nome').value.trim();
-    const mensagem = document.getElementById('mensagem').value.trim();
+    let mensagem = document.getElementById('mensagem').value.trim();
 
     // Validação do formulário
     if (!nome) {
@@ -453,8 +508,8 @@
     // Limpa o carrinho e formulário após envio
     carrinho.length = 0;
     atualizarCarrinho();
+    atualizarMensagemAutomatica();
     document.getElementById('nome').value = '';
-    document.getElementById('mensagem').value = '';
   }
 
   // ------------ CONTADOR DE VISITAS ------------
