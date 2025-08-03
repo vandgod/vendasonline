@@ -12,10 +12,9 @@
       background-size: cover;
       color: #333;
       padding: 20px;
-      margin-bottom: 400px; /* Espaço para o carrinho fixo na parte inferior */
+      margin-bottom: 400px;
     }
 
-    /* Overlay escuro para melhor legibilidade */
     body::before {
       content: '';
       position: fixed;
@@ -24,76 +23,64 @@
       z-index: -1;
     }
 
-    /* Estilo do título principal */
     h1 {
-  text-align: center;
-  font-size: 3.5em;
-  color: #00ff9d; /* Verde ciano brilhante */
-  text-shadow: 
-    -2px -2px 0 #000,  /* Contorno preto */
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000,
-    0 0 10px #00ff9d,  /* Brilho verde */
-    0 0 20px #00ff9d,
-    0 0 30px #00a86b;
-  
-  /* Borda com efeito de neon verde */
-  border: 3px solid #00ff9d;
-  padding: 15px 30px;
-  border-radius: 0; /* Cantos retos para estilo futurista */
-  
-  /* Fundo escuro semi-transparente */
-  background-color: rgba(0, 20, 10, 0.7);
-  
-  /* Efeito de luz */
-  box-shadow: 
-    0 0 15px rgba(0, 255, 157, 0.7),
-    inset 0 0 10px rgba(0, 255, 157, 0.5);
-  
-  margin-bottom: 40px;
-  font-family: 'Orbitron', sans-serif; /* Fonte futurista */
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
-  
-  /* Animação de pulsação sutil */
-  animation: pulse-green 2s infinite alternate;
-}
+      text-align: center;
+      font-size: 3.5em;
+      color: #00ff9d;
+      text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 10px #00ff9d,
+        0 0 20px #00ff9d,
+        0 0 30px #00a86b;
+      border: 3px solid #00ff9d;
+      padding: 15px 30px;
+      border-radius: 0;
+      background-color: rgba(0, 20, 10, 0.7);
+      box-shadow: 
+        0 0 15px rgba(0, 255, 157, 0.7),
+        inset 0 0 10px rgba(0, 255, 157, 0.5);
+      margin-bottom: 40px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      animation: pulse-green 2s infinite alternate;
+    }
 
-/* Efeito de borda brilhante */
-h1::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(45deg, #00ff9d, #00ff5e, #00ff9d);
-  z-index: -1;
-  filter: blur(8px);
-  opacity: 0.6;
-}
+    h1::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, #00ff9d, #00ff5e, #00ff9d);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0.6;
+    }
 
-/* Animação de pulsação verde */
-@keyframes pulse-green {
-  from {
-    box-shadow: 
-      0 0 15px rgba(0, 255, 157, 0.7),
-      inset 0 0 10px rgba(0, 255, 157, 0.5);
-  }
-  to {
-    box-shadow: 
-      0 0 25px rgba(0, 255, 157, 0.9),
-      inset 0 0 15px rgba(0, 255, 157, 0.7);
-  }
-}
+    @keyframes pulse-green {
+      from {
+        box-shadow: 
+          0 0 15px rgba(0, 255, 157, 0.7),
+          inset 0 0 10px rgba(0, 255, 157, 0.5);
+      }
+      to {
+        box-shadow: 
+          0 0 25px rgba(0, 255, 157, 0.9),
+          inset 0 0 15px rgba(0, 255, 157, 0.7);
+      }
+    }
 
     /* ---------- ESTILO DOS PRODUTOS ---------- */
     .produtos-container {
       display: grid;
-      align-items:center;
+      align-items: center;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
     }
@@ -156,21 +143,21 @@ h1::before {
     }
 
     /* ---------- ESTILO DO CARRINHO FIXO INFERIOR ---------- */
-.carrinho-fixo {
-  position: fixed;  /* Correção: usar fixed em vez de center */
-  bottom: 0;
-  left: 50%;  /* Centraliza horizontalmente */
-  transform: translateX(-50%);  /* Ajuste fino para centralização perfeita */
-  width: 60%;  /* Largura controlada */
-  max-width: 1200px;  /* Largura máxima para telas grandes */
-  background: linear-gradient(to right, #1e7e34, #28a745);
-  color: white;
-  z-index: 1000;
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
-  border-radius: 15px 15px 0 0;  /* Cantos arredondados apenas no topo */
-  margin-bottom: 10px;  /* Espaço da parte inferior */
-  transition: all 0.3s ease;  /* Transição para todas as propriedades */
-}
+    .carrinho-fixo {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      max-width: 1200px;
+      background: linear-gradient(to right, #1e7e34, #28a745);
+      color: white;
+      z-index: 1000;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+      border-radius: 15px 15px 0 0;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
 
     .carrinho-cabecalho {
       padding: 15px;
@@ -212,7 +199,7 @@ h1::before {
     }
 
     .carrinho-conteudo.aberto {
-      max-height: 400px;
+      max-height: 500px;
       padding: 20px;
       overflow-y: auto;
     }
@@ -251,10 +238,31 @@ h1::before {
       color: #333;
     }
 
-    /* Destaque para o valor faltante */
     .resumo p:last-child {
       color: #dc3545;
       font-size: 1.1em;
+    }
+
+    /* FORMULÁRIO NO RESUMO */
+    .formulario-carrinho {
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 8px;
+    }
+
+    .formulario-carrinho input,
+    .formulario-carrinho textarea {
+      width: 95%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #28a745;
+      font-size: 16px;
+    }
+
+    .formulario-carrinho textarea {
+      min-height: 80px;
     }
 
     .botoes-carrinho {
@@ -282,48 +290,31 @@ h1::before {
     }
 
     .btn-finalizar {
-      background-color: #28a745;
+      background-color: #25D366;
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn-finalizar:hover {
-      background-color: #218838;
+      background-color: #128C7E;
     }
 
-    /* ---------- ESTILO DO FORMULÁRIO ---------- */
-    .formulario {
-      background: rgba(255,255,255,0.95);
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(30, 201, 77, 0.3);
+    /* QR CODE */
+    .qrcode-container {
+      text-align: center;
+      margin: 15px 0;
     }
 
-    .formulario input, 
-    .formulario textarea {
-      width: 95%;
-      font-size: 25px;
-      padding: 20px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: 1px solid #28a745;
-    }
-
-    .formulario button {
-      width: 60%;
-      font-size: 19px;
-      background-color: #28a745;
-      color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .formulario button:hover {
-      background-color: #1e7e34;
+    .qrcode-img {
+      max-width: 150px;
+      height: auto;
+      border: 1px solid #ddd;
+      padding: 5px;
+      background: white;
+      border-radius: 8px;
     }
 
     /* ---------- ESTILO RESPONSIVO ---------- */
@@ -336,18 +327,27 @@ h1::before {
         grid-template-columns: 1fr;
       }
 
-      .formulario input, 
-      .formulario textarea {
-        font-size: 18px;
-        padding: 15px;
-      }
-
-      .formulario button {
-        width: 100%;
+      .carrinho-fixo {
+        width: 90%;
       }
 
       .carrinho-conteudo.aberto {
-        max-height: 60vh;
+        max-height: 70vh;
+      }
+
+      .formulario-carrinho input,
+      .formulario-carrinho textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .botoes-carrinho {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .botoes-carrinho button {
+        width: 100%;
       }
     }
 
@@ -447,15 +447,6 @@ h1::before {
     </div>
   </div>
 
-  <!-- FORMULÁRIO DE PEDIDO -->
-  <div class="formulario" align="center">
-    <h2>FINALIZE SEU PEDIDO</h2>
-    <input type="text" id="nome" placeholder="Seu nome" required>
-    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea>
-    <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2>
-    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
-  </div>
-
   <!-- CARRINHO FIXO NA PARTE INFERIOR -->
   <div class="carrinho-fixo" id="carrinhoFixo">
     <div class="carrinho-cabecalho" onclick="alternarCarrinho()">
@@ -464,14 +455,29 @@ h1::before {
     </div>
     <div class="carrinho-conteudo" id="carrinhoConteudo">
       <div id="lista-carrinho"></div>
+      
       <div class="resumo">
         <p>Total: R$ <span id="total">0.00</span></p>
         <p>Sinal (35%): R$ <span id="sinal">0.00</span></p>
         <p>Faltante: R$ <span id="faltante">0.00</span></p>
+        
+        <!-- FORMULÁRIO NO RESUMO -->
+        <div class="formulario-carrinho">
+          <input type="text" id="nome" placeholder="Seu nome" required>
+          <textarea id="mensagem" placeholder="Observações adicionais"></textarea>
+        </div>
+        
+        <!-- QR CODE -->
+        <div class="qrcode-container">
+          <img src="qr2.png" alt="QR Code para Pagamento" class="qrcode-img">
+        </div>
       </div>
+      
       <div class="botoes-carrinho">
         <button class="btn-limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
-        <button class="btn-finalizar" onclick="rolarParaFormulario()">Finalizar Compra</button>
+        <button class="btn-finalizar" onclick="enviarPedidoWhatsApp()">
+          <i class="fab fa-whatsapp"></i> Finalizar Pedido
+        </button>
       </div>
     </div>
   </div>
@@ -493,25 +499,15 @@ h1::before {
 
   /**
    * Adiciona um item ao carrinho
-   * @param {string} item - Nome do produto
-   * @param {number} preco - Preço do produto
    */
   function adicionarAoCarrinho(item, preco) {
-    // Adiciona o item ao array do carrinho
     carrinho.push({ item, preco });
-    
-    // Atualiza a exibição do carrinho
     atualizarCarrinho();
-
-    // Atualiza a mensagem automática
-    atualizarMensagemAutomatica();
-
+    
     // Feedback visual ao adicionar item
     const btn = event.target;
     btn.textContent = '✔ Adicionado!';
     btn.style.backgroundColor = '#5cb85c';
-    
-    // Retorna ao estado original após 1 segundo
     setTimeout(() => {
       btn.textContent = 'Adicionar ao Carrinho';
       btn.style.backgroundColor = '#28a745';
@@ -520,58 +516,35 @@ h1::before {
     // Animação no contador
     const contador = document.getElementById('contadorCarrinho');
     contador.classList.add('bump');
-    setTimeout(() => {
-      contador.classList.remove('bump');
-    }, 300);
+    setTimeout(() => contador.classList.remove('bump'), 300);
   }
 
   /**
    * Remove um item do carrinho
-   * @param {number} index - Índice do item a ser removido
    */
   function removerDoCarrinho(index) {
     carrinho.splice(index, 1);
     atualizarCarrinho();
-    atualizarMensagemAutomatica();
   }
 
   /**
    * Limpa todos os itens do carrinho
    */
-  function limparCarrinho() {
+  /**
+ * Limpa todos os itens do carrinho e fecha o carrinho
+ */
+function limparCarrinho() {
     carrinho.length = 0;
     atualizarCarrinho();
-    atualizarMensagemAutomatica();
-  }
+    document.getElementById('nome').value = '';
+    document.getElementById('mensagem').value = '';
+    
+    // Fecha o carrinho após limpar
+    document.getElementById('carrinhoConteudo').classList.remove('aberto');
+}
 
   /**
-   * Atualiza a mensagem automática com os itens do carrinho
-   */
-  function atualizarMensagemAutomatica() {
-    const mensagem = document.getElementById('mensagem');
-    
-    if (carrinho.length === 0) {
-      mensagem.value = '';
-      return;
-    }
-    
-    // Formata os itens do carrinho para a mensagem
-    const itensTexto = carrinho.map(p => `- ${p.item} (R$ ${p.preco.toFixed(2)})`).join('\n');
-    const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
-    const sinal = total * 0.35;
-    const faltante = total - sinal;
-    
-    // Verifica se já tem conteúdo personalizado para não sobrescrever
-    if (!mensagem.value.startsWith('- ')) {
-      mensagem.value = `Itens selecionados:\n${itensTexto}\n\n` +
-                       `Total: R$ ${total.toFixed(2)}\n` +
-                       `Sinal (35%): R$ ${sinal.toFixed(2)}\n` +
-                       `Faltante: R$ ${faltante.toFixed(2)}\n\n`;
-    }
-  }
-
-  /**
-   * Atualiza a exibição do carrinho e calcula totais
+   * Atualiza a exibição do carrinho
    */
   function atualizarCarrinho() {
     const lista = document.getElementById('lista-carrinho');
@@ -579,12 +552,10 @@ h1::before {
     lista.innerHTML = '';
     let total = 0;
 
-    // Verifica se o carrinho está vazio
     if (carrinho.length === 0) {
       lista.innerHTML = '<p style="text-align:center; color:#666;">Seu carrinho está vazio</p>';
       contador.textContent = '0';
     } else {
-      // Preenche a lista com os itens do carrinho
       carrinho.forEach((produto, index) => {
         total += produto.preco;
         const item = document.createElement('div');
@@ -596,8 +567,6 @@ h1::before {
           </span>`;
         lista.appendChild(item);
       });
-      
-      // Atualiza contador
       contador.textContent = carrinho.length;
     }
 
@@ -612,19 +581,11 @@ h1::before {
   }
 
   /**
-   * Rola a página para o formulário de pedido
-   */
-  function rolarParaFormulario() {
-    document.querySelector('.formulario').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('carrinhoConteudo').classList.remove('aberto');
-  }
-
-  /**
    * Envia o pedido via WhatsApp
    */
   function enviarPedidoWhatsApp() {
     const nome = document.getElementById('nome').value.trim();
-    let mensagem = document.getElementById('mensagem').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
 
     // Validação do formulário
     if (!nome) {
@@ -644,40 +605,30 @@ h1::before {
     const faltante = total - sinal;
 
     // Monta a mensagem completa
-    const texto = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
-                   `*Cliente:* ${nome}%0A%0A` +
-                   `*Itens:*%0A${itens}%0A%0A` +
-                   `*Total:* R$ ${total.toFixed(2)}%0A` +
-                   `*Sinal (35%):* R$ ${sinal.toFixed(2)}%0A` +
-                   `*Faltante:* R$ ${faltante.toFixed(2)}%0A%0A` +
-                   `*Observações:* ${mensagem || 'Nenhuma'}`;
+    const texto = `*PEDIDO - Loja de Artes Digitais*%0A%0A` +
+                 `*Cliente:* ${nome}%0A%0A` +
+                 `*Itens:*%0A${itens}%0A%0A` +
+                 `*Total:* R$ ${total.toFixed(2)}%0A` +
+                 `*Sinal (35%):* R$ ${sinal.toFixed(2)}%0A` +
+                 `*Faltante:* R$ ${faltante.toFixed(2)}%0A%0A` +
+                 `*Observações:* ${mensagem || 'Nenhuma'}`;
 
-    // Número de telefone e abertura do WhatsApp
-    const telefone = '5551989727254';
-    window.open(`https://wa.me/${telefone}?text=${texto}`, '_blank');
+    // Envia para WhatsApp
+    window.open(`https://wa.me/5551989727254?text=${texto}`, '_blank');
 
-    // Limpa o carrinho e formulário após envio
+    // Limpa o carrinho
     carrinho.length = 0;
     atualizarCarrinho();
-    atualizarMensagemAutomatica();
     document.getElementById('nome').value = '';
+    document.getElementById('mensagem').value = '';
   }
 
-  // ------------ CONTADOR DE VISITAS ------------
-  // Recupera o contador do localStorage ou inicia em 1
+  // Contador de visitas
   let contador = localStorage.getItem('contadorVisitas') || 1;
-  
-  // Incrementa o contador
   contador = parseInt(contador) + 1;
-  
-  // Salva o novo valor
   localStorage.setItem('contadorVisitas', contador);
-  
-  // Exibe na página
-  document.getElementById('contador-visitas').innerHTML = 
-    `👁️<b>${contador}</b>`;
+  document.getElementById('contador-visitas').innerHTML = `👁️<b>${contador}</b>`;
 </script>
 
 </body>
-
 </html>
