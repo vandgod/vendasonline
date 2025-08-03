@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja de Artes Digitais</title>
+  <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade para dispositivos móveis -->
+  <title>Loja de Artes Digitais</title> <!-- Título da página -->
 
   <style>
     /* ---------- ESTILOS GERAIS ---------- */
     body {
-      font-family: Arial, sans-serif;
-      background: url('https://wallpapers.com/images/hd/colorful-polygons-design-ev1wkka42c38mfej.jpg') no-repeat center center fixed;
-      background-size: cover;
-      margin-right: 350px; /* Espaço para o carrinho lateral */
-      color: #333;
-      padding: 20px;
+      font-family: Arial, sans-serif; /* Fonte padrão */
+      background: url('https://wallpapers.com/images/hd/colorful-polygons-design-ev1wkka42c38mfej.jpg') no-repeat center center fixed; /* Imagem de fundo */
+      background-size: cover; /* Cobre toda a tela */
+      margin: 0; /* Remove margens padrão */
+      color: #333; /* Cor do texto */
+      padding: 2vw; /* Espaçamento interno relativo à largura da tela */
+      min-height: 100vh; /* Garante altura mínima */
+      box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho */
     }
 
     /* Overlay escuro para melhor legibilidade */
@@ -21,270 +23,312 @@
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(141, 112, 112, 0);
+      background: rgba(141, 112, 112, 0.1); /* Leve overlay */
       z-index: -1;
     }
 
     /* Estilo do título principal */
     h1 {
-      text-align: center;
-      font-size: 3.5em;
-      color: #fff;
+      text-align: center; /* Centraliza o texto */
+      font-size: 3vw; /* Tamanho relativo à largura */
+      color: #fff; /* Cor do texto */
       text-shadow: 
         0 0 5px #fff,
         0 0 10px rgb(10, 201, 35),
         0 0 20px #0ff,
         0 0 40px #0ff,
-        0 0 80px #0ff;
-      border: 2px solid #0ff;
-      padding: 10px 20px;
-      border-radius: 10px;
-      background-color: rgba(0, 0, 0, 0.4);
+        0 0 80px #0ff; /* Efeitos de sombra */
+      border: 2px solid #0ff; /* Borda */
+      padding: 1vw 2vw; /* Espaçamento interno */
+      border-radius: 10px; /* Cantos arredondados */
+      background-color: rgba(0, 0, 0, 0.4); /* Fundo translúcido */
       box-shadow: 
         0 0 10px #0ff,
         0 0 20px #0ff,
-        0 0 40px #0ff;
-      margin-bottom: 30px;
+        0 0 40px #0ff; /* Sombra */
+      margin-bottom: 3vw; /* Espaço abaixo */
     }
 
     /* ---------- ESTILO DOS PRODUTOS ---------- */
     .produtos-container {
-      display: grid;
-      align-items:center;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
+      display: grid; /* Usa grid para layout */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+      gap: 2vw; /* Espaçamento entre produtos */
+      align-items: stretch; /* Estica os itens */
+      width: 100%; /* Ocupa toda largura */
+      max-width: 1200px; /* Limite de largura */
+      margin: 0 auto; /* Centraliza */
     }
 
     .produto {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      border: 2px solid #1ec94d;
-      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.5);
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      transition: 0.3s;
+      background: rgba(255, 255, 255, 0.95); /* Fundo branco translúcido */
+      border-radius: 10px; /* Cantos arredondados */
+      border: 2px solid #1ec94d; /* Borda */
+      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.2); /* Sombra */
+      padding: 1.5vw; /* Espaçamento interno */
+      display: flex; /* Flexbox para layout interno */
+      flex-direction: column; /* Coluna */
+      transition: 0.3s; /* Transição suave */
+      min-width: 0; /* Evita overflow */
     }
 
     .produto:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transform: translateY(-5px); /* Efeito ao passar mouse */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Sombra maior */
     }
 
     .produto img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      width: 100%; /* Imagem ocupa toda largura */
+      height: 25vw; /* Altura relativa */
+      max-height: 220px; /* Altura máxima */
+      object-fit: cover; /* Cobre área sem distorcer */
+      border-radius: 8px; /* Cantos arredondados */
+      margin-bottom: 1vw; /* Espaço abaixo */
     }
 
     .produto h3 {
-      margin: 0;
-      color: #333;
+      margin: 0; /* Remove margem padrão */
+      color: #333; /* Cor do texto */
+      font-size: 1.3em; /* Tamanho do texto */
     }
 
     .produto p {
-      color: #555;
-      flex-grow: 1;
+      color: #555; /* Cor do texto */
+      flex-grow: 1; /* Ocupa espaço disponível */
+      font-size: 1em; /* Tamanho do texto */
     }
 
     .produto .preco {
-      font-size: 1.4em;
-      font-weight: bold;
-      color: #28a745;
-      margin: 10px 0;
+      font-size: 1.2em; /* Tamanho do preço */
+      font-weight: bold; /* Negrito */
+      color: #28a745; /* Cor verde */
+      margin: 1vw 0; /* Espaço vertical */
     }
 
     .btn-adicionar {
-      background-color: #28a745;
-      width: 70%;
-      border: none;
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
+      background-color: #28a745; /* Cor de fundo */
+      width: 80%; /* Largura do botão */
+      border: none; /* Sem borda */
+      color: white; /* Cor do texto */
+      padding: 1vw; /* Espaçamento interno */
+      border-radius: 6px; /* Cantos arredondados */
+      cursor: pointer; /* Cursor de mão */
+      font-weight: bold; /* Negrito */
+      transition: 0.3s; /* Transição suave */
+      align-self: center; /* Centraliza botão */
+      font-size: 1em; /* Tamanho do texto */
     }
 
     .btn-adicionar:hover {
-      background-color: #1e7e34;
+      background-color: #1e7e34; /* Cor ao passar mouse */
     }
 
     /* ---------- ESTILO DO CARRINHO COM CAPA INTEGRADA ---------- */
     .carrinho-container {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 320px;
-      z-index: 9999;
+      position: fixed; /* Fixa na tela */
+      top: 2vw; /* Distância do topo */
+      right: 2vw; /* Distância da direita */
+      width: 340px; /* Largura fixa */
+      max-width: 90vw; /* Máximo relativo à tela */
+      z-index: 9999; /* Sobre outros elementos */
+      box-sizing: border-box; /* Inclui padding/border */
     }
 
     .capa-carrinho {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 10px;
-      border-radius: 12px 12px 0 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 100%; /* Ocupa toda largura */
+      background: rgba(255, 255, 255, 0.95); /* Fundo branco translúcido */
+      padding: 1vw; /* Espaçamento interno */
+      border-radius: 12px 12px 0 0; /* Cantos arredondados */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra */
+      text-align: center; /* Centraliza conteúdo */
     }
 
     .capa-carrinho img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
+      width: 100%; /* Imagem responsiva */
+      height: auto; /* Altura automática */
+      border-radius: 8px; /* Cantos arredondados */
+      max-height: 120px; /* Altura máxima */
+      object-fit: cover; /* Cobre área */
     }
 
     .carrinho {
-      background: rgba(255,255,255,0.95);
-      padding: 20px;
-      border-radius: 0 0 12px 12px;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      max-height: calc(90vh - 180px);
-      overflow-y: auto;
-      backdrop-filter: blur(5px);
+      background: rgba(255,255,255,0.95); /* Fundo branco translúcido */
+      padding: 2vw; /* Espaçamento interno */
+      border-radius: 0 0 12px 12px; /* Cantos arredondados */
+      border: 1px solid #ccc; /* Borda */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra */
+      max-height: 60vh; /* Altura máxima relativa à tela */
+      overflow-y: auto; /* Barra de rolagem se necessário */
+      backdrop-filter: blur(5px); /* Efeito de desfoque */
     }
 
     .carrinho h2 {
-      margin-top: 0;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 10px;
+      margin-top: 0; /* Remove margem superior */
+      border-bottom: 2px solid #ccc; /* Linha abaixo */
+      padding-bottom: 10px; /* Espaço abaixo */
+      font-size: 1.4em; /* Tamanho do texto */
     }
 
     .carrinho-item {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dashed #aaa;
-      padding: 8px 0;
+      display: flex; /* Flexbox */
+      justify-content: space-between; /* Espaço entre itens */
+      border-bottom: 1px dashed #aaa; /* Linha pontilhada */
+      padding: 8px 0; /* Espaçamento vertical */
+      font-size: 1em; /* Tamanho do texto */
     }
 
     .carrinho-item button {
-      background-color: #dc3545;
-      border: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
+      background-color: #dc3545; /* Cor vermelha */
+      border: none; /* Sem borda */
+      color: white; /* Cor do texto */
+      padding: 5px 10px; /* Espaçamento interno */
+      border-radius: 4px; /* Cantos arredondados */
+      cursor: pointer; /* Cursor de mão */
+      font-size: 0.9em; /* Tamanho do texto */
     }
 
     .carrinho-item button:hover {
-      background-color: #b02a37;
+      background-color: #b02a37; /* Cor ao passar mouse */
     }
 
     .resumo {
-      margin-top: 10px;
-      font-weight: bold;
+      margin-top: 10px; /* Espaço acima */
+      font-weight: bold; /* Negrito */
+      font-size: 1em; /* Tamanho do texto */
     }
 
     .resumo p {
-      margin: 5px 0;
-      text-align: right;
+      margin: 5px 0; /* Espaçamento vertical */
+      text-align: right; /* Alinha à direita */
     }
 
     /* Destaque para o valor faltante */
     .resumo p:last-child {
-      color: #dc3545;
-      font-size: 1.1em;
+      color: #dc3545; /* Cor vermelha */
+      font-size: 1.1em; /* Tamanho maior */
     }
 
     /* ---------- ESTILO DO FORMULÁRIO ---------- */
     .formulario {
-      background: rgba(255,255,255,0.95);
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.95); /* Fundo branco translúcido */
+      margin: 4vw auto 0 auto; /* Espaço acima e centraliza */
+      padding: 2vw; /* Espaçamento interno */
+      border-radius: 10px; /* Cantos arredondados */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
+      max-width: 600px; /* Largura máxima */
+      width: 100%; /* Ocupa toda largura */
+      box-sizing: border-box; /* Inclui padding/border */
+      text-align: center; /* Centraliza conteúdo */
     }
 
     .formulario input, 
     .formulario textarea {
-      width: 95%;
-      font-size: 25px;
-      padding: 20px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: 1px solid #28a745;
+      width: 95%; /* Largura quase total */
+      font-size: 1.2em; /* Tamanho do texto */
+      padding: 1vw; /* Espaçamento interno */
+      margin: 8px 0; /* Espaço vertical */
+      border-radius: 6px; /* Cantos arredondados */
+      border: 1px solid #28a745; /* Borda verde */
+      box-sizing: border-box; /* Inclui padding/border */
+      resize: vertical; /* Permite redimensionar textarea */
     }
 
     .formulario button {
-      width: 60%;
-      font-size: 19px;
-      background-color: #28a745;
-      color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
+      width: 60%; /* Largura do botão */
+      font-size: 1.1em; /* Tamanho do texto */
+      background-color: #28a745; /* Cor de fundo */
+      color: white; /* Cor do texto */
+      padding: 1vw; /* Espaçamento interno */
+      border: none; /* Sem borda */
+      border-radius: 6px; /* Cantos arredondados */
+      cursor: pointer; /* Cursor de mão */
+      font-weight: bold; /* Negrito */
+      transition: 0.3s; /* Transição suave */
+      margin-top: 1vw; /* Espaço acima */
     }
 
     .formulario button:hover {
-      background-color: #1e7e34;
+      background-color: #1e7e34; /* Cor ao passar mouse */
     }
 
     /* ---------- ESTILO RESPONSIVO ---------- */
-    @media (max-width: 768px) {
-      body {
-        margin-right: 0;
-      }
-
+    @media (max-width: 900px) {
       .carrinho-container {
-        position: fixed;
-        width: 100%;
-        margin-bottom: 20px;
+        width: 95vw; /* Quase toda largura */
+        max-width: 100vw; /* Limite máximo */
+        left: 2vw; /* Alinha à esquerda */
+        right: 2vw; /* Alinha à direita */
+        top: unset;
+        bottom: 0;
+        position: fixed; /* Fixa na parte inferior */
       }
-
-      .capa-carrinho {
-        border-radius: 12px;
-      }
-
-      .carrinho {
-        max-height: none;
-        border-radius: 12px;
-        margin-top: 10px;
-      }
-
       .produtos-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta colunas */
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em; /* Reduz tamanho do título */
+        padding: 2vw 1vw;
+      }
+      .carrinho-container {
+        position: static; /* Remove fixação */
+        width: 100vw; /* Ocupa toda largura */
+        max-width: 100vw;
+        margin: 0 auto 2vw auto; /* Espaço abaixo */
+      }
+      .carrinho, .capa-carrinho {
+        border-radius: 12px; /* Cantos arredondados */
+        margin-top: 0;
+        padding: 3vw;
+      }
+      .produtos-container {
+        grid-template-columns: 1fr; /* Uma coluna */
+        gap: 4vw;
+      }
+      .produto img {
+        height: 40vw; /* Imagem mais alta */
+        max-height: 180px;
+      }
+      .formulario {
+        padding: 4vw 2vw;
       }
     }
 
     /* ---------- CONTADOR DE VISITAS ---------- */
     .contador-visitas {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(255,255,255,0.8);
-      padding: 8px 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      font-size: 14px;
-      z-index: 9999;
+      position: fixed; /* Fixa na tela */
+      bottom: 10px; /* Distância da base */
+      left: 10px; /* Distância da esquerda */
+      background: rgba(255,255,255,0.8); /* Fundo translúcido */
+      padding: 8px 15px; /* Espaçamento interno */
+      border-radius: 10px; /* Cantos arredondados */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra */
+      font-size: 14px; /* Tamanho do texto */
+      z-index: 9999; /* Sobre outros elementos */
     }
   </style>
 </head>
 
 <body>
   <!-- TÍTULO PRINCIPAL -->
-  <h1>Loja de Artes Digitais</h1>
+  <h1>Loja de Artes Digitais</h1> <!-- Título da loja -->
 
   <!-- CARRINHO COM CAPA INTEGRADA -->
   <div class="carrinho-container">
     <div class="capa-carrinho" align="center">
-      <img src="capa.png" alt="Capa Stúdio Click">
+      <img src="capa.png" alt="Capa Stúdio Click"> <!-- Imagem de capa do carrinho -->
     </div>
-    
     <div class="carrinho">
-      <h2>🛒 Seu Carrinho</h2>
-      <div id="lista-carrinho"></div>
+      <h2>🛒 Seu Carrinho</h2> <!-- Título do carrinho -->
+      <div id="lista-carrinho"></div> <!-- Lista de itens do carrinho -->
       <div class="resumo">
-        <p>Total: R$ <span id="total">0.00</span></p>
-        <p>Sinal (35%): R$ <span id="sinal">0.00</span></p>
-        <p>Faltante: R$ <span id="faltante">0.00</span></p>
+        <p>Total: R$ <span id="total">0.00</span></p> <!-- Total do pedido -->
+        <p>Sinal (35%): R$ <span id="sinal">0.00</span></p> <!-- Valor do sinal -->
+        <p>Faltante: R$ <span id="faltante">0.00</span></p> <!-- Valor faltante -->
       </div>
-      <img class="qrcode" src="qr2.png" alt="QR Code" style="width:100%; margin-top:10px;">
+      <img class="qrcode" src="qr2.png" alt="QR Code" style="width:100%; margin-top:10px;"> <!-- QR Code para pagamento -->
     </div>
   </div>
 
@@ -292,13 +336,12 @@
   <div class="produtos-container">
     <!-- PRODUTO 1 -->
     <div class="produto">
-      <img src="img1.png" alt="Flyer Digital">
-      <h3>Flyer Digital</h3>
-      <p>Design profissional para evento ou promoção.</p>
-      <div class="preco">R$ 24,99</div>
-      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button>
+      <img src="img1.png" alt="Flyer Digital"> <!-- Imagem do produto -->
+      <h3>Flyer Digital</h3> <!-- Nome do produto -->
+      <p>Design profissional para evento ou promoção.</p> <!-- Descrição -->
+      <div class="preco">R$ 24,99</div> <!-- Preço -->
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button> <!-- Botão adicionar -->
     </div>
-
     <!-- PRODUTO 2 -->
     <div class="produto">
       <img src="Brasao.png" alt="Brasão">
@@ -307,7 +350,6 @@
       <div class="preco">R$ 69,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Brasão Personalizado', 69.99)">Adicionar ao Carrinho</button>
     </div>
-
     <!-- PRODUTO 3 -->
     <div class="produto">
       <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Site">
@@ -316,7 +358,6 @@
       <div class="preco">R$ 249,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Site Institucional', 249.99)">Adicionar ao Carrinho</button>
     </div>
-
     <!-- PRODUTO 4 -->
     <div class="produto">
       <img src="logo.png" alt="Logo">
@@ -325,7 +366,7 @@
       <div class="preco">R$ 99,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Logo Profissional', 99.99)">Adicionar ao Carrinho</button>
     </div>
-
+    <!-- PRODUTO 5 -->
     <div class="produto">
       <img src="logo2" alt="Logo">
       <h3>Fotografia</h3>
@@ -333,8 +374,7 @@
       <div class="preco">R$ 1,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Fotografia', 1.99)">Adicionar ao Carrinho</button>
     </div>
-
-    <!-- PRODUTO 5 -->
+    <!-- PRODUTO 6 -->
     <div class="produto">
       <img src="cartao de visita.png" alt="Cartão">
       <h3>Cartão de Visita</h3>
@@ -342,8 +382,7 @@
       <div class="preco">R$ 74,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cartão de Visita', 74.99)">Adicionar ao Carrinho</button>
     </div>
-
-    <!-- PRODUTO 6 -->
+    <!-- PRODUTO 7 -->
     <div class="produto">
       <img src="oxala.jpg" alt="Banner Orixá">
       <h3>Banner do Seu Orixá</h3>
@@ -355,15 +394,15 @@
 
   <!-- FORMULÁRIO DE PEDIDO -->
   <div class="formulario" align="center">
-    <h2>FINALIZE SEU PEDIDO</h2>
-    <input type="text" id="nome" placeholder="Seu nome" required>
-    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea>
-    <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2>
-    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
+    <h2>FINALIZE SEU PEDIDO</h2> <!-- Título do formulário -->
+    <input type="text" id="nome" placeholder="Seu nome" required> <!-- Campo nome -->
+    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea> <!-- Observações -->
+    <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2> <!-- Aviso sobre sinal -->
+    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button> <!-- Botão enviar -->
   </div>
 
   <!-- CONTADOR DE VISITAS -->
-  <div class="contador-visitas" id="contador-visitas"></div>
+  <div class="contador-visitas" id="contador-visitas"></div> <!-- Exibe contador de visitas -->
 
 <script>
   // Array para armazenar os itens do carrinho
@@ -377,18 +416,14 @@
   function adicionarAoCarrinho(item, preco) {
     // Adiciona o item ao array do carrinho
     carrinho.push({ item, preco });
-    
     // Atualiza a exibição do carrinho
     atualizarCarrinho();
-
     // Atualiza a mensagem automática
     atualizarMensagemAutomatica();
-
     // Feedback visual ao adicionar item
     const btn = event.target;
     btn.textContent = '✔ Adicionado!';
     btn.style.backgroundColor = '#5cb85c';
-    
     // Retorna ao estado original após 1 segundo
     setTimeout(() => {
       btn.textContent = 'Adicionar ao Carrinho';
@@ -401,9 +436,9 @@
    * @param {number} index - Índice do item a ser removido
    */
   function removerDoCarrinho(index) {
-    carrinho.splice(index, 1);
-    atualizarCarrinho();
-    atualizarMensagemAutomatica();
+    carrinho.splice(index, 1); // Remove item do array
+    atualizarCarrinho(); // Atualiza exibição
+    atualizarMensagemAutomatica(); // Atualiza mensagem
   }
 
   /**
@@ -411,18 +446,15 @@
    */
   function atualizarMensagemAutomatica() {
     const mensagem = document.getElementById('mensagem');
-    
     if (carrinho.length === 0) {
-      mensagem.value = '';
+      mensagem.value = ''; // Limpa se vazio
       return;
     }
-    
     // Formata os itens do carrinho para a mensagem
     const itensTexto = carrinho.map(p => `- ${p.item} (R$ ${p.preco.toFixed(2)})`).join('\n');
     const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
     const sinal = total * 0.35;
     const faltante = total - sinal;
-    
     // Verifica se já tem conteúdo personalizado para não sobrescrever
     if (!mensagem.value.startsWith('- ')) {
       mensagem.value = `Itens selecionados:\n${itensTexto}\n\n` +
@@ -437,9 +469,8 @@
    */
   function atualizarCarrinho() {
     const lista = document.getElementById('lista-carrinho');
-    lista.innerHTML = '';
+    lista.innerHTML = ''; // Limpa lista
     let total = 0;
-
     // Verifica se o carrinho está vazio
     if (carrinho.length === 0) {
       lista.innerHTML = '<p style="text-align:center; color:#666;">Seu carrinho está vazio</p>';
@@ -457,11 +488,9 @@
         lista.appendChild(item);
       });
     }
-
     // Calcula valores do pedido
     const sinal = total * 0.35;
     const faltante = total - sinal;
-    
     // Atualiza os valores na tela
     document.getElementById('total').innerText = total.toFixed(2);
     document.getElementById('sinal').innerText = sinal.toFixed(2);
@@ -474,24 +503,20 @@
   function enviarPedidoWhatsApp() {
     const nome = document.getElementById('nome').value.trim();
     let mensagem = document.getElementById('mensagem').value.trim();
-
     // Validação do formulário
     if (!nome) {
       alert('Por favor, preencha seu nome.');
       return;
     }
-
     if (carrinho.length === 0) {
       alert('Seu carrinho está vazio.');
       return;
     }
-
     // Formata os itens do carrinho para a mensagem
     const itens = carrinho.map(p => `• ${p.item} - R$ ${p.preco.toFixed(2)}`).join('%0A');
     const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
     const sinal = total * 0.35;
     const faltante = total - sinal;
-
     // Monta a mensagem completa
     const texto = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
                    `*Cliente:* ${nome}%0A%0A` +
@@ -500,11 +525,9 @@
                    `*Sinal (35%):* R$ ${sinal.toFixed(2)}%0A` +
                    `*Faltante:* R$ ${faltante.toFixed(2)}%0A%0A` +
                    `*Observações:* ${mensagem || 'Nenhuma'}`;
-
     // Número de telefone e abertura do WhatsApp
     const telefone = '5551989727254';
     window.open(`https://wa.me/${telefone}?text=${texto}`, '_blank');
-
     // Limpa o carrinho e formulário após envio
     carrinho.length = 0;
     atualizarCarrinho();
@@ -515,13 +538,10 @@
   // ------------ CONTADOR DE VISITAS ------------
   // Recupera o contador do localStorage ou inicia em 1
   let contador = localStorage.getItem('contadorVisitas') || 1;
-  
   // Incrementa o contador
   contador = parseInt(contador) + 1;
-  
   // Salva o novo valor
   localStorage.setItem('contadorVisitas', contador);
-  
   // Exibe na página
   document.getElementById('contador-visitas').innerHTML = 
     `👁️ Este site foi acessado <b>${contador}</b> vezes por você.`;
