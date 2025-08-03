@@ -1,21 +1,18 @@
-<!DOCTYPE html> <!-- Declaração do tipo de documento HTML5 -->
-<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade para dispositivos móveis -->
-  <title>Loja de Artes Digitais</title> <!-- Título da página -->
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Artes Digitais</title>
   <style>
     /* ---------- ESTILOS GERAIS ---------- */
     body {
-      font-family: Arial, sans-serif; /* Fonte padrão */
-      background: url('https://wallpapers.com/images/hd/colorful-polygons-design-ev1wkka42c38mfej.jpg') no-repeat center center fixed; /* Imagem de fundo */
-      background-size: cover; /* Cobre toda a tela */
-      margin: 0; /* Remove margens padrão */
-      color: #333; /* Cor do texto */
-      padding: 2vw; /* Espaçamento interno relativo à largura da tela */
-      min-height: 100vh; /* Garante altura mínima */
-      box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho */
+      font-family: Arial, sans-serif;
+      background: url('https://wallpapers.com/images/hd/colorful-polygons-design-ev1wkka42c38mfej.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      padding: 20px;
+      margin-bottom: 400px; /* Espaço para o carrinho fixo na parte inferior */
     }
 
     /* Overlay escuro para melhor legibilidade */
@@ -23,325 +20,379 @@
       content: '';
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(141, 112, 112, 0.1); /* Leve overlay */
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
 
     /* Estilo do título principal */
     h1 {
-      text-align: center; /* Centraliza o texto */
-      font-size: 3vw; /* Tamanho relativo à largura */
-      color: #fff; /* Cor do texto */
-      text-shadow: 
-        0 0 5px #fff,
-        0 0 10px rgb(10, 201, 35),
-        0 0 20px #0ff,
-        0 0 40px #0ff,
-        0 0 80px #0ff; /* Efeitos de sombra */
-      border: 2px solid #0ff; /* Borda */
-      padding: 1vw 2vw; /* Espaçamento interno */
-      border-radius: 10px; /* Cantos arredondados */
-      background-color: rgba(0, 0, 0, 0.4); /* Fundo translúcido */
-      box-shadow: 
-        0 0 10px #0ff,
-        0 0 20px #0ff,
-        0 0 40px #0ff; /* Sombra */
-      margin-bottom: 3vw; /* Espaço abaixo */
-    }
+  text-align: center;
+  font-size: 3.5em;
+  color: #00ff9d; /* Verde ciano brilhante */
+  text-shadow: 
+    -2px -2px 0 #000,  /* Contorno preto */
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    0 0 10px #00ff9d,  /* Brilho verde */
+    0 0 20px #00ff9d,
+    0 0 30px #00a86b;
+  
+  /* Borda com efeito de neon verde */
+  border: 3px solid #00ff9d;
+  padding: 15px 30px;
+  border-radius: 0; /* Cantos retos para estilo futurista */
+  
+  /* Fundo escuro semi-transparente */
+  background-color: rgba(0, 20, 10, 0.7);
+  
+  /* Efeito de luz */
+  box-shadow: 
+    0 0 15px rgba(0, 255, 157, 0.7),
+    inset 0 0 10px rgba(0, 255, 157, 0.5);
+  
+  margin-bottom: 40px;
+  font-family: 'Orbitron', sans-serif; /* Fonte futurista */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  
+  /* Animação de pulsação sutil */
+  animation: pulse-green 2s infinite alternate;
+}
+
+/* Efeito de borda brilhante */
+h1::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #00ff9d, #00ff5e, #00ff9d);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+/* Animação de pulsação verde */
+@keyframes pulse-green {
+  from {
+    box-shadow: 
+      0 0 15px rgba(0, 255, 157, 0.7),
+      inset 0 0 10px rgba(0, 255, 157, 0.5);
+  }
+  to {
+    box-shadow: 
+      0 0 25px rgba(0, 255, 157, 0.9),
+      inset 0 0 15px rgba(0, 255, 157, 0.7);
+  }
+}
 
     /* ---------- ESTILO DOS PRODUTOS ---------- */
     .produtos-container {
-      display: grid; /* Usa grid para layout */
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
-      gap: 2vw; /* Espaçamento entre produtos */
-      align-items: stretch; /* Estica os itens */
-      width: 100%; /* Ocupa toda largura */
-      max-width: 1200px; /* Limite de largura */
-      margin: 0 auto; /* Centraliza */
+      display: grid;
+      align-items:center;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
     }
 
     .produto {
-      background: rgba(255, 255, 255, 0.95); /* Fundo branco translúcido */
-      border-radius: 10px; /* Cantos arredondados */
-      border: 2px solid #1ec94d; /* Borda */
-      box-shadow: 0 4px 10px rgba(255, 255, 0, 0.2); /* Sombra */
-      padding: 1.5vw; /* Espaçamento interno */
-      display: flex; /* Flexbox para layout interno */
-      flex-direction: column; /* Coluna */
-      transition: 0.3s; /* Transição suave */
-      min-width: 0; /* Evita overflow */
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      border: 2px solid #1ec94d;
+      box-shadow: 0 4px 10px rgba(30, 201, 77, 0.5);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
     }
 
     .produto:hover {
-      transform: translateY(-5px); /* Efeito ao passar mouse */
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Sombra maior */
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(30, 201, 77, 0.3);
     }
 
     .produto img {
-      width: 100%; /* Imagem ocupa toda largura */
-      height: 25vw; /* Altura relativa */
-      max-height: 220px; /* Altura máxima */
-      object-fit: cover; /* Cobre área sem distorcer */
-      border-radius: 8px; /* Cantos arredondados */
-      margin-bottom: 1vw; /* Espaço abaixo */
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
     .produto h3 {
-      margin: 0; /* Remove margem padrão */
-      color: #333; /* Cor do texto */
-      font-size: 1.3em; /* Tamanho do texto */
+      margin: 0;
+      color: #333;
     }
 
     .produto p {
-      color: #555; /* Cor do texto */
-      flex-grow: 1; /* Ocupa espaço disponível */
-      font-size: 1em; /* Tamanho do texto */
+      color: #555;
+      flex-grow: 1;
     }
 
     .produto .preco {
-      font-size: 1.2em; /* Tamanho do preço */
-      font-weight: bold; /* Negrito */
-      color: #28a745; /* Cor verde */
-      margin: 1vw 0; /* Espaço vertical */
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #28a745;
+      margin: 10px 0;
     }
 
     .btn-adicionar {
-      background-color: #28a745; /* Cor de fundo */
-      width: 80%; /* Largura do botão */
-      border: none; /* Sem borda */
-      color: white; /* Cor do texto */
-      padding: 1vw; /* Espaçamento interno */
-      border-radius: 6px; /* Cantos arredondados */
-      cursor: pointer; /* Cursor de mão */
-      font-weight: bold; /* Negrito */
-      transition: 0.3s; /* Transição suave */
-      align-self: center; /* Centraliza botão */
-      font-size: 1em; /* Tamanho do texto */
+      background-color: #28a745;
+      width: 70%;
+      border: none;
+      color: white;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     .btn-adicionar:hover {
-      background-color: #1e7e34; /* Cor ao passar mouse */
+      background-color: #1e7e34;
     }
 
-    /* ---------- ESTILO DO CARRINHO COM CAPA INTEGRADA ---------- */
-    .carrinho-container {
-      position: fixed; /* Fixa na tela */
-      top: 2vw; /* Distância do topo */
-      right: 2vw; /* Distância da direita */
-      width: 340px; /* Largura fixa */
-      max-width: 90vw; /* Máximo relativo à tela */
-      z-index: 9999; /* Sobre outros elementos */
-      box-sizing: border-box; /* Inclui padding/border */
+    /* ---------- ESTILO DO CARRINHO FIXO INFERIOR ---------- */
+.carrinho-fixo {
+  position: fixed;  /* Correção: usar fixed em vez de center */
+  bottom: 0;
+  left: 50%;  /* Centraliza horizontalmente */
+  transform: translateX(-50%);  /* Ajuste fino para centralização perfeita */
+  width: 60%;  /* Largura controlada */
+  max-width: 1200px;  /* Largura máxima para telas grandes */
+  background: linear-gradient(to right, #1e7e34, #28a745);
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+  border-radius: 15px 15px 0 0;  /* Cantos arredondados apenas no topo */
+  margin-bottom: 10px;  /* Espaço da parte inferior */
+  transition: all 0.3s ease;  /* Transição para todas as propriedades */
+}
+
+    .carrinho-cabecalho {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background-color: rgba(0,0,0,0.1);
     }
 
-    .capa-carrinho {
-      width: 100%; /* Ocupa toda largura */
-      background: rgba(255, 255, 255, 0.95); /* Fundo branco translúcido */
-      padding: 1vw; /* Espaçamento interno */
-      border-radius: 12px 12px 0 0; /* Cantos arredondados */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra */
-      text-align: center; /* Centraliza conteúdo */
+    .carrinho-cabecalho h2 {
+      margin: 0;
+      display: flex;
+      align-items: center;
     }
 
-    .capa-carrinho img {
-      width: 100%; /* Imagem responsiva */
-      height: auto; /* Altura automática */
-      border-radius: 8px; /* Cantos arredondados */
-      max-height: 120px; /* Altura máxima */
-      object-fit: cover; /* Cobre área */
+    .carrinho-cabecalho h2 i {
+      margin-right: 10px;
     }
 
-    .carrinho {
-      background: rgba(255,255,255,0.95); /* Fundo branco translúcido */
-      padding: 2vw; /* Espaçamento interno */
-      border-radius: 0 0 12px 12px; /* Cantos arredondados */
-      border: 1px solid #ccc; /* Borda */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra */
-      max-height: 60vh; /* Altura máxima relativa à tela */
-      overflow-y: auto; /* Barra de rolagem se necessário */
-      backdrop-filter: blur(5px); /* Efeito de desfoque */
+    .contador-carrinho {
+      background-color: #fff;
+      color: #28a745;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
     }
 
-    .carrinho h2 {
-      margin-top: 0; /* Remove margem superior */
-      border-bottom: 2px solid #ccc; /* Linha abaixo */
-      padding-bottom: 10px; /* Espaço abaixo */
-      font-size: 1.4em; /* Tamanho do texto */
+    .carrinho-conteudo {
+      background-color: #fff;
+      color: #333;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .carrinho-conteudo.aberto {
+      max-height: 400px;
+      padding: 20px;
+      overflow-y: auto;
     }
 
     .carrinho-item {
-      display: flex; /* Flexbox */
-      justify-content: space-between; /* Espaço entre itens */
-      border-bottom: 1px dashed #aaa; /* Linha pontilhada */
-      padding: 8px 0; /* Espaçamento vertical */
-      font-size: 1em; /* Tamanho do texto */
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #aaa;
+      padding: 8px 0;
     }
 
     .carrinho-item button {
-      background-color: #dc3545; /* Cor vermelha */
-      border: none; /* Sem borda */
-      color: white; /* Cor do texto */
-      padding: 5px 10px; /* Espaçamento interno */
-      border-radius: 4px; /* Cantos arredondados */
-      cursor: pointer; /* Cursor de mão */
-      font-size: 0.9em; /* Tamanho do texto */
+      background-color: #dc3545;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
     .carrinho-item button:hover {
-      background-color: #b02a37; /* Cor ao passar mouse */
+      background-color: #b02a37;
     }
 
     .resumo {
-      margin-top: 10px; /* Espaço acima */
-      font-weight: bold; /* Negrito */
-      font-size: 1em; /* Tamanho do texto */
+      margin-top: 20px;
+      font-weight: bold;
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
     }
 
     .resumo p {
-      margin: 5px 0; /* Espaçamento vertical */
-      text-align: right; /* Alinha à direita */
+      margin: 5px 0;
+      text-align: right;
+      color: #333;
     }
 
     /* Destaque para o valor faltante */
     .resumo p:last-child {
-      color: #dc3545; /* Cor vermelha */
-      font-size: 1.1em; /* Tamanho maior */
+      color: #dc3545;
+      font-size: 1.1em;
+    }
+
+    .botoes-carrinho {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .botoes-carrinho button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-limpar {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-limpar:hover {
+      background-color: #5a6268;
+    }
+
+    .btn-finalizar {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #218838;
     }
 
     /* ---------- ESTILO DO FORMULÁRIO ---------- */
     .formulario {
-      background: rgba(255,255,255,0.95); /* Fundo branco translúcido */
-      margin: 4vw auto 0 auto; /* Espaço acima e centraliza */
-      padding: 2vw; /* Espaçamento interno */
-      border-radius: 10px; /* Cantos arredondados */
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
-      max-width: 600px; /* Largura máxima */
-      width: 100%; /* Ocupa toda largura */
-      box-sizing: border-box; /* Inclui padding/border */
-      text-align: center; /* Centraliza conteúdo */
+      background: rgba(255,255,255,0.95);
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(30, 201, 77, 0.3);
     }
 
     .formulario input, 
     .formulario textarea {
-      width: 95%; /* Largura quase total */
-      font-size: 1.2em; /* Tamanho do texto */
-      padding: 1vw; /* Espaçamento interno */
-      margin: 8px 0; /* Espaço vertical */
-      border-radius: 6px; /* Cantos arredondados */
-      border: 1px solid #28a745; /* Borda verde */
-      box-sizing: border-box; /* Inclui padding/border */
-      resize: vertical; /* Permite redimensionar textarea */
+      width: 95%;
+      font-size: 25px;
+      padding: 20px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #28a745;
     }
 
     .formulario button {
-      width: 60%; /* Largura do botão */
-      font-size: 1.1em; /* Tamanho do texto */
-      background-color: #28a745; /* Cor de fundo */
-      color: white; /* Cor do texto */
-      padding: 1vw; /* Espaçamento interno */
-      border: none; /* Sem borda */
-      border-radius: 6px; /* Cantos arredondados */
-      cursor: pointer; /* Cursor de mão */
-      font-weight: bold; /* Negrito */
-      transition: 0.3s; /* Transição suave */
-      margin-top: 1vw; /* Espaço acima */
+      width: 60%;
+      font-size: 19px;
+      background-color: #28a745;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     .formulario button:hover {
-      background-color: #1e7e34; /* Cor ao passar mouse */
+      background-color: #1e7e34;
     }
 
     /* ---------- ESTILO RESPONSIVO ---------- */
-    @media (max-width: 900px) {
-      .carrinho-container {
-        width: 95vw; /* Quase toda largura */
-        max-width: 100vw; /* Limite máximo */
-        left: 2vw; /* Alinha à esquerda */
-        right: 2vw; /* Alinha à direita */
-        top: unset;
-        bottom: 0;
-        position: fixed; /* Fixa na parte inferior */
-      }
-      .produtos-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta colunas */
-      }
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       h1 {
-        font-size: 2em; /* Reduz tamanho do título */
-        padding: 2vw 1vw;
+        font-size: 2.5em;
       }
-      .carrinho-container {
-        position: static; /* Remove fixação */
-        width: 100vw; /* Ocupa toda largura */
-        max-width: 100vw;
-        margin: 0 auto 2vw auto; /* Espaço abaixo */
-      }
-      .carrinho, .capa-carrinho {
-        border-radius: 12px; /* Cantos arredondados */
-        margin-top: 0;
-        padding: 3vw;
-      }
+
       .produtos-container {
-        grid-template-columns: 1fr; /* Uma coluna */
-        gap: 4vw;
+        grid-template-columns: 1fr;
       }
-      .produto img {
-        height: 40vw; /* Imagem mais alta */
-        max-height: 180px;
+
+      .formulario input, 
+      .formulario textarea {
+        font-size: 18px;
+        padding: 15px;
       }
-      .formulario {
-        padding: 4vw 2vw;
+
+      .formulario button {
+        width: 100%;
+      }
+
+      .carrinho-conteudo.aberto {
+        max-height: 60vh;
       }
     }
 
     /* ---------- CONTADOR DE VISITAS ---------- */
     .contador-visitas {
-      position: fixed; /* Fixa na tela */
-      bottom: 10px; /* Distância da base */
-      left: 10px; /* Distância da esquerda */
-      background: rgba(255,255,255,0.8); /* Fundo translúcido */
-      padding: 8px 15px; /* Espaçamento interno */
-      border-radius: 10px; /* Cantos arredondados */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra */
-      font-size: 14px; /* Tamanho do texto */
-      z-index: 9999; /* Sobre outros elementos */
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(255,255,255,0.8);
+      padding: 8px 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-size: 14px;
+      z-index: 9999;
+    }
+
+    /* ---------- ANIMAÇÕES ---------- */
+    @keyframes bump {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .bump {
+      animation: bump 0.3s ease;
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
   <!-- TÍTULO PRINCIPAL -->
-  <h1>Loja de Artes Digitais</h1> <!-- Título da loja -->
-
-  <!-- CARRINHO COM CAPA INTEGRADA -->
-  <div class="carrinho-container">
-    <div class="capa-carrinho" align="center">
-      <img src="capa.png" alt="Capa Stúdio Click"> <!-- Imagem de capa do carrinho -->
-    </div>
-    <div class="carrinho">
-      <h2>🛒 Seu Carrinho</h2> <!-- Título do carrinho -->
-      <div id="lista-carrinho"></div> <!-- Lista de itens do carrinho -->
-      <div class="resumo">
-        <p>Total: R$ <span id="total">0.00</span></p> <!-- Total do pedido -->
-        <p>Sinal (35%): R$ <span id="sinal">0.00</span></p> <!-- Valor do sinal -->
-        <p>Faltante: R$ <span id="faltante">0.00</span></p> <!-- Valor faltante -->
-      </div>
-      <img class="qrcode" src="qr2.png" alt="QR Code" style="width:100%; margin-top:10px;"> <!-- QR Code para pagamento -->
-    </div>
-  </div>
+  <h1>Loja de Artes Digitais</h1>
 
   <!-- SEÇÃO DE PRODUTOS -->
   <div class="produtos-container">
     <!-- PRODUTO 1 -->
     <div class="produto">
-      <img src="img1.png" alt="Flyer Digital"> <!-- Imagem do produto -->
-      <h3>Flyer Digital</h3> <!-- Nome do produto -->
-      <p>Design profissional para evento ou promoção.</p> <!-- Descrição -->
-      <div class="preco">R$ 24,99</div> <!-- Preço -->
-      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button> <!-- Botão adicionar -->
+      <img src="img1.png" alt="Flyer Digital">
+      <h3>Flyer Digital</h3>
+      <p>Design profissional para evento ou promoção.</p>
+      <div class="preco">R$ 24,99</div>
+      <button class="btn-adicionar" onclick="adicionarAoCarrinho('Flyer Digital', 24.99)">Adicionar ao Carrinho</button>
     </div>
+
     <!-- PRODUTO 2 -->
     <div class="produto">
       <img src="Brasao.png" alt="Brasão">
@@ -350,6 +401,7 @@
       <div class="preco">R$ 69,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Brasão Personalizado', 69.99)">Adicionar ao Carrinho</button>
     </div>
+
     <!-- PRODUTO 3 -->
     <div class="produto">
       <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Site">
@@ -358,6 +410,7 @@
       <div class="preco">R$ 249,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Site Institucional', 249.99)">Adicionar ao Carrinho</button>
     </div>
+
     <!-- PRODUTO 4 -->
     <div class="produto">
       <img src="logo.png" alt="Logo">
@@ -366,7 +419,7 @@
       <div class="preco">R$ 99,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Logo Profissional', 99.99)">Adicionar ao Carrinho</button>
     </div>
-    <!-- PRODUTO 5 -->
+
     <div class="produto">
       <img src="logo2" alt="Logo">
       <h3>Fotografia</h3>
@@ -374,7 +427,8 @@
       <div class="preco">R$ 1,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Fotografia', 1.99)">Adicionar ao Carrinho</button>
     </div>
-    <!-- PRODUTO 6 -->
+
+    <!-- PRODUTO 5 -->
     <div class="produto">
       <img src="cartao de visita.png" alt="Cartão">
       <h3>Cartão de Visita</h3>
@@ -382,7 +436,8 @@
       <div class="preco">R$ 74,99</div>
       <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cartão de Visita', 74.99)">Adicionar ao Carrinho</button>
     </div>
-    <!-- PRODUTO 7 -->
+
+    <!-- PRODUTO 6 -->
     <div class="produto">
       <img src="oxala.jpg" alt="Banner Orixá">
       <h3>Banner do Seu Orixá</h3>
@@ -394,19 +449,47 @@
 
   <!-- FORMULÁRIO DE PEDIDO -->
   <div class="formulario" align="center">
-    <h2>FINALIZE SEU PEDIDO</h2> <!-- Título do formulário -->
-    <input type="text" id="nome" placeholder="Seu nome" required> <!-- Campo nome -->
-    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea> <!-- Observações -->
-    <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2> <!-- Aviso sobre sinal -->
-    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button> <!-- Botão enviar -->
+    <h2>FINALIZE SEU PEDIDO</h2>
+    <input type="text" id="nome" placeholder="Seu nome" required>
+    <textarea id="mensagem" placeholder="Observações adicionais (os itens do carrinho serão adicionados automaticamente)"></textarea>
+    <h2>PEDIDOS ON-LINE NECESSITAM SINAL DE 35%</h2>
+    <button onclick="enviarPedidoWhatsApp()">Enviar Pedido via WhatsApp</button>
+  </div>
+
+  <!-- CARRINHO FIXO NA PARTE INFERIOR -->
+  <div class="carrinho-fixo" id="carrinhoFixo">
+    <div class="carrinho-cabecalho" onclick="alternarCarrinho()">
+      <h2><i class="fas fa-shopping-cart"></i> Seu Carrinho</h2>
+      <div class="contador-carrinho" id="contadorCarrinho">0</div>
+    </div>
+    <div class="carrinho-conteudo" id="carrinhoConteudo">
+      <div id="lista-carrinho"></div>
+      <div class="resumo">
+        <p>Total: R$ <span id="total">0.00</span></p>
+        <p>Sinal (35%): R$ <span id="sinal">0.00</span></p>
+        <p>Faltante: R$ <span id="faltante">0.00</span></p>
+      </div>
+      <div class="botoes-carrinho">
+        <button class="btn-limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
+        <button class="btn-finalizar" onclick="rolarParaFormulario()">Finalizar Compra</button>
+      </div>
+    </div>
   </div>
 
   <!-- CONTADOR DE VISITAS -->
-  <div class="contador-visitas" id="contador-visitas"></div> <!-- Exibe contador de visitas -->
+  <div class="contador-visitas" id="contador-visitas"></div>
 
 <script>
   // Array para armazenar os itens do carrinho
   const carrinho = [];
+
+  /**
+   * Alterna a exibição do carrinho (abre/fecha)
+   */
+  function alternarCarrinho() {
+    const conteudo = document.getElementById('carrinhoConteudo');
+    conteudo.classList.toggle('aberto');
+  }
 
   /**
    * Adiciona um item ao carrinho
@@ -416,19 +499,30 @@
   function adicionarAoCarrinho(item, preco) {
     // Adiciona o item ao array do carrinho
     carrinho.push({ item, preco });
+    
     // Atualiza a exibição do carrinho
     atualizarCarrinho();
+
     // Atualiza a mensagem automática
     atualizarMensagemAutomatica();
+
     // Feedback visual ao adicionar item
     const btn = event.target;
     btn.textContent = '✔ Adicionado!';
     btn.style.backgroundColor = '#5cb85c';
+    
     // Retorna ao estado original após 1 segundo
     setTimeout(() => {
       btn.textContent = 'Adicionar ao Carrinho';
       btn.style.backgroundColor = '#28a745';
     }, 1000);
+
+    // Animação no contador
+    const contador = document.getElementById('contadorCarrinho');
+    contador.classList.add('bump');
+    setTimeout(() => {
+      contador.classList.remove('bump');
+    }, 300);
   }
 
   /**
@@ -436,9 +530,18 @@
    * @param {number} index - Índice do item a ser removido
    */
   function removerDoCarrinho(index) {
-    carrinho.splice(index, 1); // Remove item do array
-    atualizarCarrinho(); // Atualiza exibição
-    atualizarMensagemAutomatica(); // Atualiza mensagem
+    carrinho.splice(index, 1);
+    atualizarCarrinho();
+    atualizarMensagemAutomatica();
+  }
+
+  /**
+   * Limpa todos os itens do carrinho
+   */
+  function limparCarrinho() {
+    carrinho.length = 0;
+    atualizarCarrinho();
+    atualizarMensagemAutomatica();
   }
 
   /**
@@ -446,15 +549,18 @@
    */
   function atualizarMensagemAutomatica() {
     const mensagem = document.getElementById('mensagem');
+    
     if (carrinho.length === 0) {
-      mensagem.value = ''; // Limpa se vazio
+      mensagem.value = '';
       return;
     }
+    
     // Formata os itens do carrinho para a mensagem
     const itensTexto = carrinho.map(p => `- ${p.item} (R$ ${p.preco.toFixed(2)})`).join('\n');
     const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
     const sinal = total * 0.35;
     const faltante = total - sinal;
+    
     // Verifica se já tem conteúdo personalizado para não sobrescrever
     if (!mensagem.value.startsWith('- ')) {
       mensagem.value = `Itens selecionados:\n${itensTexto}\n\n` +
@@ -469,11 +575,14 @@
    */
   function atualizarCarrinho() {
     const lista = document.getElementById('lista-carrinho');
-    lista.innerHTML = ''; // Limpa lista
+    const contador = document.getElementById('contadorCarrinho');
+    lista.innerHTML = '';
     let total = 0;
+
     // Verifica se o carrinho está vazio
     if (carrinho.length === 0) {
       lista.innerHTML = '<p style="text-align:center; color:#666;">Seu carrinho está vazio</p>';
+      contador.textContent = '0';
     } else {
       // Preenche a lista com os itens do carrinho
       carrinho.forEach((produto, index) => {
@@ -487,14 +596,27 @@
           </span>`;
         lista.appendChild(item);
       });
+      
+      // Atualiza contador
+      contador.textContent = carrinho.length;
     }
+
     // Calcula valores do pedido
     const sinal = total * 0.35;
     const faltante = total - sinal;
+    
     // Atualiza os valores na tela
     document.getElementById('total').innerText = total.toFixed(2);
     document.getElementById('sinal').innerText = sinal.toFixed(2);
     document.getElementById('faltante').innerText = faltante.toFixed(2);
+  }
+
+  /**
+   * Rola a página para o formulário de pedido
+   */
+  function rolarParaFormulario() {
+    document.querySelector('.formulario').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('carrinhoConteudo').classList.remove('aberto');
   }
 
   /**
@@ -503,20 +625,24 @@
   function enviarPedidoWhatsApp() {
     const nome = document.getElementById('nome').value.trim();
     let mensagem = document.getElementById('mensagem').value.trim();
+
     // Validação do formulário
     if (!nome) {
       alert('Por favor, preencha seu nome.');
       return;
     }
+
     if (carrinho.length === 0) {
       alert('Seu carrinho está vazio.');
       return;
     }
+
     // Formata os itens do carrinho para a mensagem
     const itens = carrinho.map(p => `• ${p.item} - R$ ${p.preco.toFixed(2)}`).join('%0A');
     const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
     const sinal = total * 0.35;
     const faltante = total - sinal;
+
     // Monta a mensagem completa
     const texto = `*NOVO PEDIDO - Loja de Artes Digitais*%0A%0A` +
                    `*Cliente:* ${nome}%0A%0A` +
@@ -525,9 +651,11 @@
                    `*Sinal (35%):* R$ ${sinal.toFixed(2)}%0A` +
                    `*Faltante:* R$ ${faltante.toFixed(2)}%0A%0A` +
                    `*Observações:* ${mensagem || 'Nenhuma'}`;
+
     // Número de telefone e abertura do WhatsApp
     const telefone = '5551989727254';
     window.open(`https://wa.me/${telefone}?text=${texto}`, '_blank');
+
     // Limpa o carrinho e formulário após envio
     carrinho.length = 0;
     atualizarCarrinho();
@@ -538,13 +666,16 @@
   // ------------ CONTADOR DE VISITAS ------------
   // Recupera o contador do localStorage ou inicia em 1
   let contador = localStorage.getItem('contadorVisitas') || 1;
+  
   // Incrementa o contador
   contador = parseInt(contador) + 1;
+  
   // Salva o novo valor
   localStorage.setItem('contadorVisitas', contador);
+  
   // Exibe na página
   document.getElementById('contador-visitas').innerHTML = 
-    `👁️ Este site foi acessado <b>${contador}</b> vezes por você.`;
+    `👁️Acessado <b>${contador}</b> X por você.`;
 </script>
 
 </body>
